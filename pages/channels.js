@@ -1,21 +1,19 @@
-import { connectToDatabase } from "../util/mongodb";
+import tableStyles from "../styles/table.module.css"
+import 'react-virtualized/styles.css'
+import { useSession } from 'next-auth/client'
+import { Header } from "../components/Header"
+import React from "react"
+import { MainContent } from "../components/MainContent"
+import { JoinUs } from "../components/JoinUs"
 
+export default function Channels() {
+    const [loading] = useSession()
 
-export default function Channels({channels}) {
-    console.log(channels);
-    return <h1>Hello</h1>
-}
+    return <div id="tableContainer" className={tableStyles.container}>
+    <Header/>
+    <MainContent />
+    <JoinUs/>
 
-export async function getStaticProps() {
-    const { db } = await connectToDatabase();
-    const channels = await db
-      .collection("channels")
-      .find({})
-      .limit(1000)
-      .toArray();
-    return {
-      props: {
-        channels: JSON.parse(JSON.stringify(channels)),
-      },
-    };
+    {loading && <div className={tableStyles.title}>Loading...</div>}
+  </div>
   }

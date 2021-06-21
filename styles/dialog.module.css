@@ -1,0 +1,40 @@
+.closeButton {
+    float: right;
+    border-radius: 2rem;
+    background: #c4e1ff;
+}
+
+.closeButton:hover {
+    cursor: pointer;
+}
+
+.dialog form {
+    margin-top: 3rem;
+}
+
+#title {
+    text-align: center;
+    font-size: 5vh;
+}
+
+.formField {
+    padding: 2rem;
+}
+
+.inputWrapper input {
+    margin:  0.5rem;
+}
+
+#verifyButton {
+    display: flex;
+    margin: auto;
+}
+
+#verifyButton:hover {
+    cursor: pointer;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+}

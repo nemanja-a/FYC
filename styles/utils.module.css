@@ -1,0 +1,12 @@
+.displayFlex { 
+    display: flex;
+    align-items: center;
+}
+
+.borderRounded {
+    border-radius: 10px;
+}
+
+.cursorPointer:hover {
+    cursor:pointer
+}
