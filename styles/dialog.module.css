@@ -34,6 +34,14 @@
     cursor: pointer;
 }
 
+#channelValid {
+    color: green
+}
+
+#channelInvalid {
+    color: red;
+}
+
 #buttons {
     display: flex;
     justify-content: space-around;

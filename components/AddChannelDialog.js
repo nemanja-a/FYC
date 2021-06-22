@@ -6,13 +6,14 @@ import tableStyles from "../styles/table.module.css"
 
 export function AddChannelDialog(props) {
   const [showDialog, setShowDialog] = useState(false)
-  const [channelValid, setChannelValid] = useState(false)
+  const [channelValid, setChannelValid] = useState(null)
 
   const open = () => setShowDialog(true)
   const close = () => setShowDialog(false)
   let channelID, description = '';
   const onChannelIDChange = (event) => {
     channelID = event.target.value
+    !channelValid && setChannelValid(null)
   }
 
   const onDescriptionChange = (event) => {
@@ -22,10 +23,14 @@ export function AddChannelDialog(props) {
   const onSubmit = async (event) => {
     event.stopPropagation()
     event.preventDefault()
+
     const validateChannelURL = `http://localhost:3000/api/validate?id=${channelID}`
-    const channelResponse = await fetch(validateChannelURL)
+    const channelResponse = await fetch(validateChannelURL, {
+      headers: { 'credentials': 'include'}
+    })
     const channel = await channelResponse.json()
-    channel.isValid && setChannelValid(true)
+    setChannelValid(channel.isValid)
+
     return
   }
 
@@ -35,7 +40,7 @@ export function AddChannelDialog(props) {
 
   return (
     <div>
-      <button
+       <button
         className={tableStyles.addChannelCell}
         onClick={open}
         style={{'width': props.tableParams.cellWidth, 'height': props.tableParams.rowHeight}}
@@ -57,6 +62,8 @@ export function AddChannelDialog(props) {
               <a href="https://support.google.com/youtube/answer/3250431?hl=en" target="_blank"> those </a>
                 <span>guys might know...</span>
                 <button id={dialogStyles.verifyButton} type="submit">Verify</button>        
+                {(!channelValid && channelValid !== null) && <span id={dialogStyles.channelInvalid}>Not that one, I'm sure you have a better one... Let's go one more time</span>}
+                {channelValid && <span id={dialogStyles.channelValid}>Hm, this looks promising. I know a good channel when I see one because, trust me, I have seen things...</span>}
             </div>
 
             <div className={dialogStyles.formField}>

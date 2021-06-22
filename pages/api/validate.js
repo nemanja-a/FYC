@@ -1,22 +1,23 @@
 import jwt from 'next-auth/jwt';
-const secret = process.env.JWT_SECRET;
-let accessToken;
 
 export default async (req, res) => {
-  const token = await jwt.getToken({ req, secret, algorithm: 'HS256' })
+  let accessToken;
+  const secret = process.env.JWT_SECRET
+
+  const token = await jwt.getToken({ req, secret })
   accessToken = token.accessToken;
   const youTubeAPIurl = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet&mine=true&key="  + process.env.GOOGLE_API_KEY
   const youTubeAPIres = await fetch(youTubeAPIurl, {
-      headers: {'Authorization': 'Bearer ' + accessToken}
+      headers: {
+        'Authorization': 'Bearer ' + accessToken,
+        'Accept': 'application/json',
+        'credentials': 'include'
+      }
   })
-  const youTubedata = await youTubeAPIres.json();
-  const channelID = req.body.channelID
-  const channel = youTubedata.items.length && youTubedata.items.find(item => {
+  const youTubeData = await youTubeAPIres.json();
+  const channelID = req.query.id
+  const channel = youTubeData.items.length && youTubeData.items.find(item => {
       return item.id === channelID
   })
-  const errorMsg = "Well, boss, only channel owners can add their channels here. Do it one more time, we know you have the real things to show!"
-  if (!channel) { 
-    return res.status(400).json(errorMsg);
-  } 
-  res.json({isValid: true});
+  channel ? res.json({isValid: true}) : res.json({isValid: false})
 };

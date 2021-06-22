@@ -27,10 +27,6 @@ export function ChannelsTable ({ index }) {
     // if (error) return <div>failed to load</div>
     // if (!data) return <div>loading...</div>
 
-    const onChannelClick = (channel) => {
-      console.log(channel)
-    }
-
     const rowGetter = ({index}) => { 
       if(!data) return {}
 
@@ -49,7 +45,6 @@ export function ChannelsTable ({ index }) {
           return row.isEmpty ? <AddChannelDialog 
            tableParams={tableParams}
            rowData={row} key={row.columnIndex}
-           onClick={() => onChannelClick(row)}
            />
           : 
           <a
