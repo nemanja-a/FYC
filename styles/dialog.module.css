@@ -1,48 +1,236 @@
-.closeButton {
-    float: right;
-    border-radius: 2rem;
-    background: #c4e1ff;
+.dialog {
+    margin: 0 auto;
+    margin-top: 2%;
+    min-height: 91vh;
+    width: 40vw;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    position: relative;
+    padding: 2rem 3rem;
 }
 
-.closeButton:hover {
-    cursor: pointer;
+#resetFormButton {
+    border-radius: 15%;
 }
 
-.dialog form {
-    margin-top: 3rem;
-}
-
-#title {
+.title {
     text-align: center;
-    font-size: 5vh;
+    font-size: 4vh;
+    padding: 0.5rem 0 2rem 0;
 }
 
-.formField {
-    padding: 2rem;
+.required {
+    color: red;
 }
 
-.inputWrapper input {
-    margin:  0.5rem;
+.required input::before {
+    content: '*';
+    color: red;
 }
 
-#verifyButton {
+.step {
+
+}
+
+.urlInput {
+
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px){
+    .urlInput {
+        min-width: auto !important;
+        width: 9vw !important;
+        padding: 0 0.5rem !important;
+    }
+    .dialog {
+        width: 50vw;
+    }
+    #imagePreviewWrapper {
+        width: 18vw !important;
+        height: 30vh !important;
+    }
+    .stepButton {
+        width: max-content !important;
+    }
+    #websiteTitlePreview, #websiteDescriptionPreview {
+        width: 18vw !important;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+    #imagePreviewWrapper {
+        width: 21vw !important;
+        height: 27vh !important;
+    }
+    .dialog {
+        width: 50vw;
+    }
+    .stepButton {
+        width: max-content !important;
+    }
+    #websiteTitlePreview, #websiteDescriptionPreview {
+        width: 21vw !important;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+    .dialog { 
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .dialog { 
+        width: 50vw;
+    }
+    .stepButton {
+        width: max-content !important;
+    }
+    #websiteTitlePreview, #websiteDescriptionPreview {
+        width: 18vw !important;
+    }
+}
+
+#websiteInputWrapper {
     display: flex;
-    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+#websiteInputWrapper span {
+    display: flex;
+}
+
+.checkmark {
+    display:inline-block;
+    width: 22px;
+    height:22px;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+.checkmarkStem {
+    position: absolute;
+    width: 2px;
+    height: 25px;
+    background-color: green;
+    left: 24px;
+    top: 2px;
+}
+
+.checkmarkKick {
+    position: absolute;
+    width: 9px;
+    height: 2px;
+    background-color: green;
+    left: 17px;
+    top: 25px;
 }
 
 #verifyButton:hover {
     cursor: pointer;
 }
 
-#channelValid {
-    color: green
-}
-
-#channelInvalid {
-    color: red;
-}
-
 #buttons {
     display: flex;
     justify-content: space-around;
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#payPalComponentWrapper {
+    width: 15rem;
+}
+
+#websitePreview { 
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 7vh;
+}
+
+#websiteTitlePreview, #websiteDescriptionPreview {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    max-height: 5vh;
+    width: 16vw;
+}
+
+#websiteTitlePreview { 
+    top: 40px;
+}
+
+/* Dimensions are related to .cell in table.module.css - width and height of an image should be 4x larger than those on the table*/
+#imagePreviewWrapper {
+    position: relative;
+    width: 16vw;
+    height: 24vh;
+}
+
+#imagePreviewWrapper div {
+    position: unset !important;
+}
+
+.fieldGroup { 
+    min-width: 19vw;
+}
+
+.confirmationDialog { 
+    width: 25vw;
+    height: 20vh;
+    margin: 25vh auto;
+    z-index: 1;
+}
+
+.confirmationDialog div {
+    text-align: center;
+}
+
+.confirmationDialogButtons {
+    display: flex;
+    justify-content: center;
+}
+
+#stepButtonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    bottom: 1rem;
+    position: absolute;
+    width: inherit;
+    left: 0.5rem;
+}
+
+.stepButton {
+    width: 11vw;  
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.3rem 0;
+}
+
+#imageUploadOverlay { 
+    position: absolute!important;
+    z-index: 6;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 4rem 0.5rem;
+    text-align: center;
+}
+
+.imagePreviewHovered { 
+    opacity: 0.3;
+    border: 2px solid !important;
+    border-style: dashed !important;
+    transition: all 0.3s ease-in-out;
 }

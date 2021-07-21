@@ -1,22 +1,72 @@
-import React, { useState } from "react";
-import { ChannelsTable } from "./ChannelsTable";
+import React, { useState } from "react"
+import { WebsitesTable } from "./WebsitesTable"
 import paginationStyles from "../styles/pagination.module.css"
-import { TOTAL_PAGE_COUNT } from "../util/variables";
+import { NAVIGATION_BUTTONS_COUNT, TOTAL_PAGE_COUNT } from "../util/variables"
+import tableStyles from '../styles/table.module.css'
+import { classNames } from "../lib/util"
+import { Input } from "./common/Input"
 
 export function MainContent () {
-    const [ pageIndex, setPageIndex ] = useState(0)
+    const [ state, setState ] = useState({
+      pageIndex: 0,
+      pageRangeStart: 0,
+    })
 
-    return <div id="main-content">
-      <ChannelsTable index={pageIndex}/>
-      <div style={{ display: 'none' }}><ChannelsTable index={pageIndex + 1}/></div>
+    const handleGoToPageEnterKey = (control) => { 
+      if (control.eventKey === 'Enter') {
+        if (control.value >= TOTAL_PAGE_COUNT - NAVIGATION_BUTTONS_COUNT && control.value <= TOTAL_PAGE_COUNT) {
+          setState({...state, pageRangeStart: TOTAL_PAGE_COUNT - NAVIGATION_BUTTONS_COUNT, pageIndex: TOTAL_PAGE_COUNT - (TOTAL_PAGE_COUNT - control.value) })
+        } else if (control.value <= TOTAL_PAGE_COUNT) {
+          setState({...state, pageRangeStart: control.value, pageIndex: control.value})
+        }
+      }
+    }
+
+    const goToPageWrapperClasses = classNames({
+      [paginationStyles.goToPageInput]: true
+    })
+    const goToPageClasses = {
+      wrapper: goToPageWrapperClasses
+    }
+
+    const previousButtonDisabled = !state.pageIndex
+    const nextButtonDisabled = state.pageIndex > TOTAL_PAGE_COUNT - 1
+    
+    const navigationButton = (pageIndex, buttonIndex) => <button id={buttonIndex} className={pageIndex === state.pageIndex ? paginationStyles.activePage : null } onClick={() => setState({...state, pageIndex})}>{pageIndex}</button>
+    const rangeButton = (text, disabled, onClick) => <button disabled={disabled} onClick={onClick}>{text}</button> 
+    const onFirstPageClicked = () => setState({loading: true, pageRangeStart: 0, pageIndex: 0})
+    const onRangeButtonClicked = (pageRangeStart) => { setState({loading: true, pageRangeStart, pageIndex: pageRangeStart}) }
+    const onLastPageClicked = () => setState({loading: true, pageRangeStart: TOTAL_PAGE_COUNT - NAVIGATION_BUTTONS_COUNT, pageIndex: TOTAL_PAGE_COUNT})
+
+    return <div id={tableStyles.mainContent}>
       <div id={paginationStyles.pagination}>
-        <button disabled={!pageIndex} onClick={() => pageIndex && setPageIndex(0)}>First page</button>
-        <button disabled={!pageIndex} onClick={() => pageIndex && setPageIndex(pageIndex - 1)}>Previous</button>
-        <button disabled={!pageIndex} onClick={() => pageIndex && setPageIndex(pageIndex - 1)}>{pageIndex ? pageIndex - 1: pageIndex}</button>
-        <button id="current-page">{pageIndex}</button>
-        <button disabled={pageIndex > TOTAL_PAGE_COUNT - 3} onClick={() => setPageIndex(pageIndex + 1)}>{pageIndex + 1}</button>
-        <button disabled={pageIndex > TOTAL_PAGE_COUNT - 3} onClick={() => setPageIndex(pageIndex + 1)}>Next</button>
-        <button disabled={pageIndex > TOTAL_PAGE_COUNT - 3} onClick={() => setPageIndex(TOTAL_PAGE_COUNT - 3)}>Last page</button>
+        <div id={paginationStyles.paginationWrapper}>
+          {rangeButton('First', previousButtonDisabled, onFirstPageClicked)}
+          {rangeButton('<< Previous', previousButtonDisabled, onRangeButtonClicked.bind(this, state.pageIndex - 1))}
+          {navigationButton(state.pageRangeStart, 1)}
+          {navigationButton(state.pageRangeStart + 1, 2)}
+          {navigationButton(state.pageRangeStart + 2, 3)}
+          {navigationButton(state.pageRangeStart + 3, 4)}
+          {navigationButton(state.pageRangeStart + 4, 5)}
+          {navigationButton(state.pageRangeStart + 5, 6)}
+          {rangeButton('Next >>', nextButtonDisabled, onRangeButtonClicked.bind(this, state.pageIndex + 1))}
+          {rangeButton('Last', nextButtonDisabled, onLastPageClicked)}
+          
+          <Input 
+            label='Go To Page'
+            type="number"
+            name='page'
+            min="0"
+            max="3333"
+            classes={goToPageClasses}
+            onKeyDown={handleGoToPageEnterKey}
+          />        
+        </div>
       </div>
+      <WebsitesTable pageIndex={state.pageIndex}/>
     </div>
 }
+
+// <label htmlFor="goToPage" className={formStyles.controlLabel}>Go to page</label><i className={formStyles.bar}></i>
+// <input id={paginationStyles.goToPageInput} type="number" maxLength="5" max="3333" name="goToPage" onChange={onGoToPageChange} onKeyDown={handleGoToPageEnterKey}/>
+

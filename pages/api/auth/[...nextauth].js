@@ -1,14 +1,5 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
-import jwt from 'next-auth'
-
-const GOOGLE_AUTHORIZATION_URL =
-  "https://accounts.google.com/o/oauth2/v2/auth?" +
-  new URLSearchParams({
-    prompt: "consent",
-    access_type: "offline",
-    response_type: "code",
-  });
 
 /**
  * Takes a token, and returns a new token with updated
@@ -42,7 +33,7 @@ const GOOGLE_AUTHORIZATION_URL =
     return {
       ...token,
       accessToken: refreshedTokens.access_token,
-      accessTokenExpires: Date.now() + refreshedTokens.expires_in * 1000,
+      accessTokenExpires: Date.now() + refreshedTokens.expires_in * 2,
       refreshToken: refreshedTokens.refresh_token ?? token.refreshToken, // Fall back to old refresh token
     };
   } catch (error) {
@@ -60,8 +51,9 @@ const options = {
         Providers.Google({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
-            scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.readonly',
+            client_email: process.env.GOOGLE_CLIENT_EMAIL,
+            authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth?&access_type=offline&response_type=code',
+            scope: 'https://www.googleapis.com/auth/cloud-platform',
         }),
     ],
     secret: process.env.JWT_SECRET,

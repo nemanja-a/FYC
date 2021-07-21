@@ -4,15 +4,25 @@
 }
 
 #textContent {
-    margin-left: 20vw;
-    display: inline;
-    text-align: center;
+    padding: 1% 0;
+    display: flex;
+    width: 100%;
 }
 
 #appName {
-
+    margin-left: 0.5rem;
+    font-size: 2rem;
 }
 
-#appDescription{ 
+#appName span {
+    color: white;
+}
+
+#appDescription { 
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+#appSubDescription {
 
 }

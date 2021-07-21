@@ -83,6 +83,24 @@ html,
     padding: 0;
     margin: 0;
     font-family: 'Roboto Slab', serif;
-    background: rgb(231,230,230);
-    background: linear-gradient(90deg, rgba(231,230,230,1) 30%, rgba(206,206,206,1) 68%);
+    font-size: 13px;
+    font-style: italic;
+    width: 100%;
+    height: auto;
+    /* background: linear-gradient(0deg, rgba(255,255,255,1) 63%, rgba(255,170,78,1) 94%); */
+    background: #ececec;
+
+    /* dark */
+    /* background: linear-gradient(0deg, rgba(21,21,21,1) 63%, rgba(255,170,78,1) 94%); */
+}
+
+/* Override class from react virtualized lib */
+.ReactVirtualized__Table__Grid, .ReactVirtualized__Grid__innerScrollContainer {
+  overflow: visible !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0
 }

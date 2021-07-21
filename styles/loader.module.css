@@ -1,0 +1,61 @@
+  /* Table loader */
+  #tableLoader { 
+    position: relative;
+    left: 47%;
+    top: 40%;
+  }
+
+  #tableLoader .spinner {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  #tableLoader .spinner:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #ffaa4e;
+    border-color: #ffaa4e transparent #ffaa4e transparent;
+    animation: spinner 1.2s linear infinite;
+  }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Modal loader */
+  #modalLoader { 
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: black;
+    opacity: 0.7;
+    z-index: 1000;
+  }
+
+  #modalLoader .spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #modalLoader .spinner:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #ffaa4e;
+    border-color: #ffaa4e transparent #ffaa4e transparent;
+    animation: spinner 1.2s linear infinite;
+  }

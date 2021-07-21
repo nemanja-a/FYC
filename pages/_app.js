@@ -1,5 +1,6 @@
-import { Provider } from 'next-auth/client'
+import { Provider, useSession } from 'next-auth/client'
 import '../styles/reset.css';
+
 
 function MyApp({ Component, pageProps }) {
 
@@ -7,6 +8,9 @@ function MyApp({ Component, pageProps }) {
     <Provider session={pageProps.session}>
       <Component {...pageProps} />
     </Provider>
+    //   <WebsitesProvider afterWebsiteAdded={pageProps.afterWebsiteAdded}>
+    //   <Component {...pageProps} />
+    // </WebsitesProvider>
   )
 }
 export default MyApp

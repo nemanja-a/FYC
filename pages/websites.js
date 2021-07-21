@@ -4,13 +4,17 @@ import { Header } from "../components/Header"
 import React from "react"
 import { MainContent } from "../components/MainContent"
 import { JoinUs } from "../components/JoinUs"
+import { ToastContainer } from "react-toastify"
+import Meta from "../components/common/Meta"
 
-export default function Channels() {
+export default function Websites() {
     return <div id="tableContainer" className={tableStyles.container}>
-    <Header/>
-    <MainContent />
+      <Meta title="Best of 2021" />
+      <ToastContainer />
+      <div>
+        <Header/>
+        <MainContent />
+      </div>
     <JoinUs/>
-
-    {/* {loading && <div className={tableStyles.title}>Loading...</div>} */}
   </div>
   }

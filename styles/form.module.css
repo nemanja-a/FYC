@@ -1,0 +1,90 @@
+.inputWrapper { 
+    padding: 0 0.5rem 0.1rem 0.5rem;
+    width: 100%;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+}
+
+.input:focus {
+    border-color: #ffaa4e;
+}
+
+.input:disabled {
+    outline: 0;
+    border-color: #818181;
+    border-width: 0 0 2px;
+    background: white;
+    opacity: 0.5;
+}
+
+.input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #d6d6d6;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 0.1rem;
+}
+
+.inputNumber {
+    width: 2vw;
+    border-width: 1px;
+    text-align: center;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.incrementerInput {
+    border-width: 1px 0 1px 0;
+    border-radius: 0;
+}
+
+.inputWrapper input {
+    margin: 0.2rem 0;
+}
+
+.disabled { 
+    opacity: 0.5;
+}
+
+.repeatableButton button {
+    text-align: center;
+    width: 1.8rem;
+}
+
+.repeatableButton button:hover {
+    cursor: pointer;
+    background: #a9a9a9 !important;
+}
+
+.repeatableButton button:disabled {
+    cursor: default !important;
+    background: #D8DDDE !important;
+}
+
+.formControl { 
+    position: relative;
+    min-width: 30%;
+}
+
+.label {
+    min-width: max-content;
+    /* padding: 0 1rem; */
+    padding: 0 0.5rem;
+}
+
+.checkbox { 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: max-content;
+}
+
+.checkbox input {
+    width: 30px;
+    height: 20px;
+}

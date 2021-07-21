@@ -3,19 +3,18 @@ module.exports = {
       return [
         {
           source: '/',
-          destination: '/channels',
+          destination: '/websites',
           permanent: true,
         },
       ]
     },
     images: {
-      domains: ['yt3.ggpht.com', 'source.unsplash.com']
+      domains: ['res.cloudinary.com']
     },
     session: {
       jwt: true
     },
-    // jwt: {
-    //   encryption: true
-    // }
-    // basePath: '/channels',
+    env: {
+      BASE_API_URL: 'http://localhost:3000/api'
+    }
   }

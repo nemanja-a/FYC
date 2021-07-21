@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  width: 100%;
+  padding: 0.3rem 0;
+}
+
+.colorPicker {
+  height: 100px !important;
+  width: 100px !important;
+  position: absolute !important;
+  z-index: 1;
+}
+
+.colorPickerCollapsed {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px inset black;
+}
+.colorPickerCollapsed:hover {
+  cursor: pointer;
+}
+
+.container .react-colorful {
+    height: 50px;
+    position: absolute;
+  }
+  .react-colorful__saturation {
+    border-radius: 3px 3px 0 0;
+  }
+  .react-colorful__hue {
+    height: 30px;
+    border-radius: 0 0 3px 3px;
+  }
+  .react-colorful__saturation-pointer {
+    border-radius: 5px;
+  }
+  .react-colorful__hue-pointer {
+    border-radius: 2px;
+    width: 15px;
+    height: inherit;
+  }

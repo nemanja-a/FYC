@@ -1,32 +1,41 @@
 #tableWrapper {
-    width: 80%
+    width: 80%;
+    border-radius: 15px;
+    height: 77vh;
+    background: #e6e6e6;
 }
 
 .table { 
-    height: 85vh;
+    position: fixed;
+    height: 75vh;
     width: 80vw;
-    background: rgb(137,137,137);
-    background: linear-gradient(90deg, rgba(137,137,137,1) 30%, rgba(166,166,166,1) 68%);
-    border-radius: 10px;
-    margin: 0 0.5rem;
-    padding-top: 0.4rem;
-    padding-left: 1.5rem;
+    background: white;
+    /* border-radius: 15px 0 15px 0; */
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 1px grey;
+}
+
+#rightSide {
+    padding-left: 1rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .joinFirstStep, .joinSecondStep{
-    position: absolute;
     width: 15vw;
     top: 0.5rem;
     right: 3vw;
 }
 
 .container {
+    display: flex;
     height: 85vh;
     width: 100vw;
 }
 
-.addChannelCell {
-    opacity: 0.2;
+.addWebsiteCell {
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -39,21 +48,19 @@
     margin-right: 0 !important;
 }
 
-.addChannelCell:hover {
+.addWebsiteCell:hover {
     opacity: 1;
     cursor: pointer;
 }
 
-.imageWrapper div {
+.emptyFieldWrapper div {
     height: 100%;
-    transition: transform 0.2s;
 }
 
-.imageWrapper:hover { 
+.emptyFieldWrapper:hover { 
     cursor: pointer;
-    transform: scale(3.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     z-index: 1;
-    position: relative;
+    border: 1px solid gray;
 }
 
 .ReactVirtualized__Table__headerColumn, .ReactVirtualized__Table__rowColumn {
@@ -64,9 +71,96 @@
     display: flex;
     justify-content: space-between;
     width: 77vw;
+    height: 5.5vh;
 }
 
-.channelImage {
+.emptyCell {
+    display: flex;
+    min-width: 4vw;
+    min-height: 4vh;
+}
+
+/* Dimensions are related to .imagePreviewWrapper in dialog.module.css*/
+.cell {
+    display: flex;
+    justify-content: space-between;
+    min-width: 4vw;
+    position: relative;
+    transition: transform 0.1s;
+    image-rendering: crisp-edges;
+}
+
+.cell div {
+    /* min-height: 6vh; */
+    min-width: 4vw;
+    position: absolute !important;
+}
+.cell a:hover {
+    border: none;
+}
+
+.cell:hover {
     width: 100%;
     height: 100%;
+    transform: scale(4.5);
+    z-index: 1;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.firstCellInRow {
+
+}
+
+.firstCellInRow:hover {
+    /* left: 93px; */
+    /* transition: opacity 1s; */
+}
+
+.websiteImage {
+    -webkit-backface-visibility: hidden !important; 
+    -ms-transform: translateZ(0) !important; /* IE 9 */
+    -webkit-transform: translateZ(0) !important; /* Chrome, Safari, Opera */
+    transform: translateZ(0) !important;
+    /* object-fit: cover;
+    width: 4vw;
+    height: 6vh;
+    position: relative; */
+}
+
+#mainContent {
+    position: relative;
+    /* width: 80vw; */
+    width: 80vw;
+    height: 80.5vh;
+    box-shadow: 0px 0px 10px 1px grey;
+    background: white;
+    margin-left: 7vw;
+    /* background: url('../public/images/main-background.jpg'); */
+    /* background: url('../public/images/youtube_background.png'); */
+    /* background: url('../public/images/instagram-backgroundjpg.jpg'); */
+    /* background: url('../public/images/instagram-backgroundjpg.jpg'); */
+    /* background: url('../public/images/Twitter_Background.png'); */
+
+    /* background: url('../public/images/white-gradient-brown-linear-highlight-1920x1080.svg'); */
+    /* background-size: cover; */
+    /* background-position: center; */
+}
+
+#websiteTitle { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 5px;
+    text-align: center;
+    max-height: 2vh;
+}
+
+#websiteDescription { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 4px;
+    text-align: center;
+    max-height: 2vh;
 }

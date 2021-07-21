@@ -10,3 +10,112 @@
 .cursorPointer:hover {
     cursor:pointer
 }
+
+.formButton {
+    display: flex;
+    margin: auto;
+}
+
+.formItemSpacing {
+    margin-right: 1rem;
+}
+
+.required:after {
+    content:" *";
+    color: red;
+}
+
+.button { 
+    margin: 0 1rem;
+    padding: 0.2rem;
+}
+
+.footnote {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.closeButton {
+    float: right;
+    background: #D8DDDE;
+    outline: 0;
+    border: none;
+    height: 29px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.closeButton:hover {
+    cursor: pointer;
+    background: #a9a9a9;
+}
+
+.closeButton:disabled {
+    cursor: default;
+    background: #D8DDDE;
+}
+
+.uploadButton {
+    width: 15vw;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2rem 0;
+}
+
+.buttonPrimary {
+    min-width: 5vw;
+    border: none;
+    background: #D8DDDE;
+    border-radius: 5px;
+    padding: 0.4rem 0.2rem 0.4rem 0.4rem;
+    text-align: center;
+}
+
+.buttonPrimary:hover {
+    cursor: pointer;
+    background: #a9a9a9;
+}
+
+.buttonPrimary:disabled {
+    cursor: default;
+    background-color: #D8DDDE;
+}
+
+.buttonSecondary {
+
+}
+
+.success { 
+    color: green;
+    word-break: break-word;
+}
+
+.warning {
+    color: #ffaa4e;
+    word-break: break-word;
+}
+
+.error {
+    color: red;
+    word-break: break-word;
+}
+
+.dropZone { 
+    position: absolute;
+    cursor: pointer;
+    height: 100%;
+}
+
+.dropZoneDisabled:hover { 
+    cursor: default;
+}
+
+.dropZone div:last-child{
+    width: 0 !important;
+    height: 0 !important;
+}

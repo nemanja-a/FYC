@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "famous-channels",
+  "private_key_id": "f2d60f2dde10994b0adebf91f0b502c81626d219",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCw3UyxghlyaDzv\n6yqXwePb2WUgoABy5PazW69YmdGahvCZW97HZ7F+ikUUSvIrpch79sytYlZo/+pr\nxy759j0ZqIZUY0S3jeK8iNmvpSfFwQ1y0G0rZ8xSIvBe/JYf6O/n7QrIKaXmbECr\nQhtnvtBao+lFv6YRkoGl7aQpSi2pT/ahT8KKmnSe5LQD+fxjEaOvv5uPydTZ+Ugv\nrvfMhyQIB442Yn34iliB1izSTGeptiMrQsdul2WClTaE74AICwerk6PIH+5ZrWAR\nPcRa47cOfMXAlT/83VRjopCXM3KCWI426GjFHKb/HfXlm8SlJANR1HH9A/DwfjYZ\nLa4XNR5HAgMBAAECggEABL/sr1evF0N1X3wRSMIMPHs6HAYv/OXpOifcLaTz3BKD\no5q0AObn/V35PPJGTqXFHI8kMAPUDj3RLdPLjyrtuSKteNaxobxNuoJyViU5TDZD\nBjJSvDetZQdLLUHbRkAbMT9MatOzgNynX/IGimK1dbmxKg5bh11H3gzju7giQcm4\naCdlxxiQuKqvyFwR8za80R2BokiuTDQ9X482di3nrxjSE91foPu4GPPXGW1qMX+S\nQYztwv43Fe/+cokeMpLcV20o5Jn3LS3xA7Hq7BhAdCcK5NjhYuGM/Mald5XENjBJ\nZLI7+wWjgDyUAFemruY6KioWn/GMTf8D7XUMvyM7AQKBgQD2n2uZ8/9l2NnvjaIr\n+GWMPa42s3QfxhnLsPvSUygrJf3h2qr7IDjWLtSWRhI00/9rlWPnvDQlVDKnL1re\nSlbyhotNK0gCF2/Rzk/za9mO3L4FjlcOgTBHRxb0ifx4zSTfrbovdMOx2ntPa+rM\nmL8JJv0IOIJ5Iy18Gq7DfwfhRQKBgQC3lt16QxCcjtr+M3SRrzoM/oevXSlnkS04\nc49ci1qg4fbiXh+68ESNR/XxtXYuVp7l97wQlLfk0EOq5MVl283XI6aL4j7v38Al\nS8/DQlwdFLo8I7r1ly0SAmqzlOPOE/c7xlNcnz0+wuDexx+n9+X8cAp/lMWBLWoL\n9jVJZ06sGwKBgEfNyJ1NThnQFjvJ5+KXcrFvL+7bNr8dhVspz1fAQFy3tgBxEwEE\ns6eggOKzyg85fg9LsofA4wnPRuQoRHOd/0yjYaF5LYD2Y+cZA2wjBXezy1uAwtYF\nRRIrn4JZPnnJeKfrQ98XRvbcXrST/gvNmSlIAbnIAizU0iRk/GcM8DVlAoGANRT8\n4q3jbrDrZtZv3POiQEGT78NrBlP2lDztdZ+hS6UqIhd+6ykvWP42gXWrPwiyluGD\nUfP+G72P4yiUXrgoEw1uyUFYWzkBsIb0Aov8YDgvBNZ75yiX0n46ZcQl/d7N/E2C\nquQr7CqipCdE4ucNa2jl0C+uz4PXBrBgheHF4IMCgYBZEhnP1biJA+gNP2+ASzBJ\nUT5IZP4TbF/nIPMAaKk9tcy0X9z2ZxuTJ1LO1hP+O1HUa+RhV6USlTMrnl76FMBG\nTKDcWwJTW0TkyT7wmjeI5O7MNXUg+HUUZ5b/DsclWsnaw8FjGv6Zy33QiLywVTb2\nHBz7+nVdir3i2LIhCWozeA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "webriskserviceaccount@famous-channels.iam.gserviceaccount.com",
+  "client_id": "109902446904371855216",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/webriskserviceaccount%40famous-channels.iam.gserviceaccount.com"
+}

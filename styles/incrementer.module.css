@@ -1,0 +1,17 @@
+.buttons {
+    margin-left: 2rem;
+}
+
+.buttons button {
+    background: #D8DDDE;
+    border: none;
+    outline: none;
+}
+
+.buttons button:active {
+    background: #D8DDDE;
+}
+
+.buttons button:hover {
+    cursor: pointer;
+}
