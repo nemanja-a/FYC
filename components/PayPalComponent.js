@@ -43,16 +43,23 @@ const PayPalBtn = (props) => {
               });
               
             },
-            onApprove: async function(data, actions) {
+            onApprove: async (data, actions) => {
               // This function captures the funds from the transaction.
-              const addWebsiteResponse = await props.addWebsite()
-              if (addWebsiteResponse.error) {
-                return props.onError(addWebsiteResponse.error)
-              }
-              return actions.order.capture().then(function(details) {
-                props.afterPaymentComplete(details)
-              });
-            }
+              // const addWebsiteResponse = await props.addWebsite()
+              // if (addWebsiteResponse.error) {
+              //   return props.onError(addWebsiteResponse.error)
+              // }
+
+              return actions.order.get().then(async(orderDetails) => {
+                const addWebsiteResponse = await props.addWebsite()
+                if (addWebsiteResponse.error) {
+                  return props.onError(addWebsiteResponse.error)
+                }
+                return actions.order.capture().then(async(details) => {
+                  // window.location.reload(false)
+                });   
+              })
+             }
           }).render(refPayPalBtn.current);
           //This function displays Smart Payment Buttons on your web page.
         

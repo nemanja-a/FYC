@@ -8,7 +8,8 @@ export function Input(props) {
     let inputClasses = classNames({
       [styles.input]: true,
       [styles.inputNumber]: props.type === 'number',
-      [styles.incrementerInput]: props.withIncrement
+      [styles.incrementerInput]: props.withIncrement,
+      [styles.fullWidth]: props.maxWidth,
     })
 
     //
@@ -47,13 +48,25 @@ export function Input(props) {
         [styles.disabled]: props.disabled,
         [styles.label]: true
     })
-    
 
+    let wrapperStyles = classNames({
+        [styles.input]: true,
+        [styles.fullWidth]: props.maxWidth
+    })
+
+    if (props.maxWidth) {
+        wrapperStyles = `${wrapperStyles} ${styles.fullWidth}`
+    }
+    
+    if (props.classes && props.classes.wrapper) {
+        wrapperStyles =  `${wrapperStyles} ${props.classes.wrapper}`
+    }
+    
     const onKeyDown = (event) => { 
         let value = event.target.value
         props.onKeyDown && props.onKeyDown({name: props.name, value: Number(value), eventKey: event.key})
     }
-    return <div className={styles.input}>
+    return <div className={wrapperStyles}>
             <label
                 className={labelStyles}
                 htmlFor={props.name}>{props.label}
@@ -62,7 +75,8 @@ export function Input(props) {
             {/* Input type number */}
             {props.type === 'number' && <div className={inputNumberwrapperClasses}>
                 {props.withIncrement && <RepeatableButton
-                     style={{background: '#D8DDDE', borderRadius: '5px 0 0 5px'}}
+                    style={{background: '#ffaa4e', borderRadius: '5px 0 0 5px'}}
+
                      disabled={props.disabled}
                      onPress={onDecrement}
                      onHold={onDecrement}>
@@ -84,7 +98,7 @@ export function Input(props) {
                 onKeyPress={onKeyPress}
             />
                 {props.withIncrement && <RepeatableButton 
-                    style={{background: '#D8DDDE', borderRadius: '0 5px 5px 0'}}
+                    style={{background: '#ffaa4e', borderRadius: '0 5px 5px 0'}}
                     disabled={props.disabled}
                     onPress={onIncrement}
                     onHold={onIncrement}>

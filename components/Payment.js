@@ -9,8 +9,7 @@ import { server } from '../config'
 import { showError } from '../lib/toast'
 
 export function Payment(props) {  
-    const initialAmount = Number(localStorage.getItem('amount')) || 2
-    const [amount, setAmount] = useState(initialAmount)
+    const [amount, setAmount] = useState(2)
     
     const onAmountChange = () => { 
       const amount = Number(event.target.value)
@@ -31,9 +30,12 @@ export function Payment(props) {
         props.toggleLoading(false)  
       }
       const data = await websiteResponse.json()
-      props.toggleLoading(false)
-      props.close()
-      return data
+      if (data.status === "Success") { 
+        const websiteAddSuccess = true
+        props.toggleLoading(false)
+        props.close(websiteAddSuccess)
+        return data
+      }
     }
 
     const onError = (message) => { 
@@ -43,7 +45,8 @@ export function Payment(props) {
   return (
        <div id={dialogStyles.secondStep}>
             <div className={paymentStyles.content}>
-                <span style={{padding: '1rem 0'}}>
+                {/* <span style={{padding: '1rem 0'}}> */}
+                <span id={paymentStyles.amountWrapper}>
                   <Input 
                       label='Amount in USD($)'
                       name='amount'
@@ -51,7 +54,7 @@ export function Payment(props) {
                       onChange={onAmountChange}
                       value={amount}
                   />
-                <span className={utilStyles.footnote}>Spot for your website costs 2€. However, if you like the idea behind this page, feel free to enter any other amount.</span>
+                <span className={utilStyles.footnote}>Spot for website costs 2€, but feel free to change it.</span>
                 </span> 
                 <span id={dialogStyles.payPalComponentWrapper}>
                     <PayPalComponent addWebsite={addWebsite} onError={onError}/>

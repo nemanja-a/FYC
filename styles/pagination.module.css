@@ -2,7 +2,7 @@
     width: 100%;
     padding: 0 0.3rem 0.1rem 0;
     background: #ececec;
-    height: 3.5vh;
+    height: 4.5vh;
 }
 
 #paginationWrapper { 
@@ -19,7 +19,7 @@
     color: white;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
     #paginationWrapper { 
         height: 100%;
         width: 100%;
@@ -27,10 +27,19 @@
         align-items: center;
         justify-content: center;
     }
+}
 
-    .goToPageInputWrapper {
-        width: auto;
-    }
+.goToPageInputWrapper {
+    width: max-content !important;
+    display: flex;
+}
+
+.goToPageInputWrapper label {
+    margin: 0.5rem;
+}
+
+.goToPageInputWrapper label:hover {
+    cursor: pointer;
 }
 
 #pagination button {

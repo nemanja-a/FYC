@@ -23,10 +23,7 @@
     outline: 0;
     border-width: 0 0 2px;
     border-color: #d6d6d6;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
-    align-items: center;
     padding: 0.1rem;
 }
 
@@ -51,19 +48,27 @@
     opacity: 0.5;
 }
 
+.fullWidth {
+    width: 100%;
+}
+
 .repeatableButton button {
     text-align: center;
     width: 1.8rem;
+    
 }
 
 .repeatableButton button:hover {
     cursor: pointer;
-    background: #a9a9a9 !important;
+    /* background: #a9a9a9 !important; */
+    background: #ff931d !important;
+    
 }
 
 .repeatableButton button:disabled {
     cursor: default !important;
-    background: #D8DDDE !important;
+    background: #ffaa4e;
+    /* background: #D8DDDE !important; */
 }
 
 .formControl { 
@@ -73,8 +78,6 @@
 
 .label {
     min-width: max-content;
-    /* padding: 0 1rem; */
-    padding: 0 0.5rem;
 }
 
 .checkbox { 

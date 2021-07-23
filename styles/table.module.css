@@ -6,13 +6,10 @@
 }
 
 .table { 
-    position: fixed;
-    height: 75vh;
+    height: 76vh;
     width: 80vw;
     background: white;
-    /* border-radius: 15px 0 15px 0; */
     border-radius: 5px;
-    box-shadow: 0px 5px 15px 1px grey;
 }
 
 #rightSide {
@@ -20,7 +17,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .joinFirstStep, .joinSecondStep{
@@ -60,7 +57,7 @@
 .emptyFieldWrapper:hover { 
     cursor: pointer;
     z-index: 1;
-    border: 1px solid gray;
+    border: 1px dashed gray;
 }
 
 .ReactVirtualized__Table__headerColumn, .ReactVirtualized__Table__rowColumn {
@@ -74,14 +71,7 @@
     height: 5.5vh;
 }
 
-.emptyCell {
-    display: flex;
-    min-width: 4vw;
-    min-height: 4vh;
-}
-
-/* Dimensions are related to .imagePreviewWrapper in dialog.module.css*/
-.cell {
+.cell, .emptyCell {
     display: flex;
     justify-content: space-between;
     min-width: 4vw;
@@ -91,7 +81,7 @@
 }
 
 .cell div {
-    /* min-height: 6vh; */
+    min-height: 6vh;
     min-width: 4vw;
     position: absolute !important;
 }
@@ -106,15 +96,8 @@
     z-index: 1;
     opacity: 1;
     cursor: pointer;
-}
-
-.firstCellInRow {
-
-}
-
-.firstCellInRow:hover {
-    /* left: 93px; */
-    /* transition: opacity 1s; */
+    position: relative;
+    bottom: 1vh;
 }
 
 .websiteImage {
@@ -122,38 +105,24 @@
     -ms-transform: translateZ(0) !important; /* IE 9 */
     -webkit-transform: translateZ(0) !important; /* Chrome, Safari, Opera */
     transform: translateZ(0) !important;
-    /* object-fit: cover;
-    width: 4vw;
-    height: 6vh;
-    position: relative; */
 }
 
 #mainContent {
     position: relative;
-    /* width: 80vw; */
     width: 80vw;
-    height: 80.5vh;
+    height: 81.5vh;
     box-shadow: 0px 0px 10px 1px grey;
     background: white;
-    margin-left: 7vw;
-    /* background: url('../public/images/main-background.jpg'); */
-    /* background: url('../public/images/youtube_background.png'); */
-    /* background: url('../public/images/instagram-backgroundjpg.jpg'); */
-    /* background: url('../public/images/instagram-backgroundjpg.jpg'); */
-    /* background: url('../public/images/Twitter_Background.png'); */
-
-    /* background: url('../public/images/white-gradient-brown-linear-highlight-1920x1080.svg'); */
-    /* background-size: cover; */
-    /* background-position: center; */
 }
 
 #websiteTitle { 
     position: absolute;
     width: 100%;
-    height: 100%;
-    font-size: 5px;
+    font-size: 4px;
     text-align: center;
-    max-height: 2vh;
+    max-height: max-content;
+    height: auto;
+    font-size: 3.25px;
 }
 
 #websiteDescription { 
@@ -162,5 +131,7 @@
     height: 100%;
     font-size: 4px;
     text-align: center;
-    max-height: 2vh;
+    max-height: max-content;
+    height: auto;
+    font-size: 3.25px;
 }

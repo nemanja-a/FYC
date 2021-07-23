@@ -30,9 +30,24 @@
     padding: 0.2rem;
 }
 
+#footerDescription {
+    padding: 1rem 0.5rem 0.5rem 1.5rem;
+    box-shadow: 0px 5px 15px 1px grey;
+    width: 80vw;
+}
+
+#footer {
+    padding-top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+}
+
 .footnote {
     font-size: 0.9rem;
     font-weight: 600;
+    padding: 1rem;
 }
 
 .closeButton {
@@ -70,7 +85,7 @@
 .buttonPrimary {
     min-width: 5vw;
     border: none;
-    background: #D8DDDE;
+    background: #ffaa4e;
     border-radius: 5px;
     padding: 0.4rem 0.2rem 0.4rem 0.4rem;
     text-align: center;
@@ -78,12 +93,16 @@
 
 .buttonPrimary:hover {
     cursor: pointer;
-    background: #a9a9a9;
+    background: #ff931d;
 }
 
 .buttonPrimary:disabled {
     cursor: default;
-    background-color: #D8DDDE;
+    opacity: 0.7;
+}
+
+.buttonPrimary:disabled:hover {
+    background: #ffaa4e;
 }
 
 .buttonSecondary {
@@ -118,4 +137,12 @@
 .dropZone div:last-child{
     width: 0 !important;
     height: 0 !important;
+}
+
+.stepTitle {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

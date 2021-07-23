@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import useSWR from "swr"
 import { classNames, fetcher, getTableParams } from "../lib/util"
 import tableStyles from "../styles/table.module.css"
@@ -11,6 +11,7 @@ import { TableLoader } from "./TableLoader"
 export function WebsitesTable ({ pageIndex }) {
   let tableParams;
   const [ tableContainer, setTableContainer ] = useState('')
+  const [ afterAddSuccess, setAfterAddSuccess ] = useState(false)
   let loading = true;
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export function WebsitesTable ({ pageIndex }) {
   })
 
     tableParams = (tableContainer && !tableParams) && getTableParams(tableContainer)
-    if (tableParams && loading) data = null
+    // if (tableParams && loading) data = null
     let { data, error } = useSWR(tableParams ? `/api/websites?page=${Number(pageIndex)}` : null, fetcher) 
     
     if (!data) return <TableLoader loading={loading} />
@@ -57,7 +58,7 @@ export function WebsitesTable ({ pageIndex }) {
           return cell.isEmpty ? <AddWebsiteDialog 
            tableParams={tableParams}
            website={cell} key={cell.columnIndex}
-           firstCellInRow={!cell.columnIndex}
+           afterAddSuccess={() => setAfterAddSuccess(true)}
            />
           : 
           <div
@@ -66,30 +67,31 @@ export function WebsitesTable ({ pageIndex }) {
            onClick={() => onWebsiteClick(cell.url)}
            >
             <Image
-              src={cell.thumbnail.url || WEBSITE.THUMBNAIL_SOURCE.DEFAULT}
+              src={cell.thumbnail.url || WEBSITE.THUMBNAIL.DEFAULT}
               className={tableStyles.websiteImage}
-              height={tableParams.rowHeight}
-              width={tableParams.cellWidth}
-              alt={cell.title}
+              layout="fill"
+              alt='No image found'
             />
-            <span 
+            <span             
               id={tableStyles.websiteTitle}
               style={{
-                opacity: `${cell.titleOpacity}`,
+                opacity: cell.titleOpacity < 10 ? `0.${cell.titleOpacity}` : 1,
                 color: cell.titleColor,
-                background: cell.titleBackgroundColor,
-                top: `${cell.titlePosition / 4}px`,
+                background: cell.titleBackgroundColor,              
+                top: `${cell.titlePosition}%`,
+                height: `${cell.titleHeight / 4}px`
               }} 
             >
             {cell.title ? cell.title : null}</span>
 
-              <span      
+              <span                    
               id={tableStyles.websiteDescription}
-              style={{
-                opacity: `${cell.descriptionOpacity}`,
+              style={{          
+                opacity: cell.descriptionOpacity < 10 ? `0.${cell.descriptionOpacity}` : 1,
                 color: cell.descriptionColor,
                 background: cell.descriptionBackgroundColor,
-                top: `${cell.descriptionPosition / 4}px`,
+                top: cell.descriptionPosition + 11 + "%",
+                height: `${cell.descriptionHeight / 4}px`
               }}
             >
               {cell.description ? cell.description : null}</span>
@@ -99,7 +101,8 @@ export function WebsitesTable ({ pageIndex }) {
        </div>
     }
   
-    return  <div id={tableStyles.tableWrapper}>
+    // return  <div id={tableStyles.tableWrapper}>
+    return  <div>
         {tableParams && <Table
             width={tableParams.tableWidth}
             height={tableParams.tableHeight}

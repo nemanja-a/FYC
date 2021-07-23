@@ -3,6 +3,7 @@
     position: relative;
     left: 47%;
     top: 40%;
+    width: min-content;
   }
 
   #tableLoader .spinner {

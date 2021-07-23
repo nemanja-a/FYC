@@ -7,26 +7,13 @@ export const DEFAULT_MODAL_WEBSITE_IMAGE = 'https://www.contentviewspro.com/wp-c
 export const WEBSITE = { 
     TITLE_MAX_LENGTH: 40,
     DESCRIPTION_MAX_LENGTH: 70,
-    THUMBNAIL_SOURCE: {
-        YOUTUBE: 'yt3.ggpht.com',
-        // DEFAULT: 'https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png',
-        // YT
-        // DEFAULT: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/YouTube_social_white_squircle_%282017%29.svg/1200px-YouTube_social_white_squircle_%282017%29.svg.png',
-        // Instagram
-        // DEFAULT: '/images/IG_glyph_icon/glyph-logo_May2016.png',
-        // DEFAULT: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqhxFhCb98775aKzOdC5rafKASZ03tMANpeQ&usqp=CAU',
-
-
-        //  DEFAULT: '/images/add_website_icon.png'
-        // DEFAULT: '/images/add_website_icon.jpg'
-        DEFAULT: '/images/green-earth.png'
+    THUMBNAIL: {
+        // DEFAULT: '/images/green-earth.png',
+        DEFAULT: '/images/Logo.jpg',
+        NO_IMAGE_FOUND: '/images/no-image-found-360x260.png'
     }
 }
 
-export const ALLOWED_FORMATS = [
-    'image/jpeg',
-    'image/jpg',
-    'image/png'
-]
+export const ALLOWED_FORMATS = 'image/jpeg, image/jpg, image/png'
 
 export const REFERER_HEADER_MAX_LENGTH = 2083

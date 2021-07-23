@@ -5,6 +5,7 @@ import { NAVIGATION_BUTTONS_COUNT, TOTAL_PAGE_COUNT } from "../util/variables"
 import tableStyles from '../styles/table.module.css'
 import { classNames } from "../lib/util"
 import { Input } from "./common/Input"
+import utilStyles from "../styles/utils.module.css"
 
 export function MainContent () {
     const [ state, setState ] = useState({
@@ -23,7 +24,7 @@ export function MainContent () {
     }
 
     const goToPageWrapperClasses = classNames({
-      [paginationStyles.goToPageInput]: true
+      [paginationStyles.goToPageInputWrapper]: true
     })
     const goToPageClasses = {
       wrapper: goToPageWrapperClasses
@@ -66,7 +67,4 @@ export function MainContent () {
       <WebsitesTable pageIndex={state.pageIndex}/>
     </div>
 }
-
-// <label htmlFor="goToPage" className={formStyles.controlLabel}>Go to page</label><i className={formStyles.bar}></i>
-// <input id={paginationStyles.goToPageInput} type="number" maxLength="5" max="3333" name="goToPage" onChange={onGoToPageChange} onKeyDown={handleGoToPageEnterKey}/>
 

@@ -1,7 +1,8 @@
 .dialog {
+    overflow-y: auto;
     margin: 0 auto;
     margin-top: 2%;
-    min-height: 91vh;
+    height: 91vh;
     width: 40vw;
     border-radius: 10px;
     transition: all 0.5s ease;
@@ -16,7 +17,8 @@
 .title {
     text-align: center;
     font-size: 4vh;
-    padding: 0.5rem 0 2rem 0;
+    padding-top: 0.5rem;
+    font-size: 28px;
 }
 
 .required {
@@ -28,18 +30,10 @@
     color: red;
 }
 
-.step {
-
-}
-
-.urlInput {
-
-}
-
 @media screen and (min-width: 1200px) and (max-width: 1400px){
     .urlInput {
         min-width: auto !important;
-        width: 9vw !important;
+        width: 14vw !important;
         padding: 0 0.5rem !important;
     }
     .dialog {
@@ -91,15 +85,15 @@
     }
 }
 
-#websiteInputWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.4rem;
+#firstStepDescriptionText {
+    padding: 5vh 0 7vh 0;
 }
 
-#websiteInputWrapper span {
+#websiteInputWrapper {
     display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
 }
 
 .checkmark {
@@ -153,6 +147,10 @@
     padding-bottom: 7vh;
 }
 
+#websitePreview p {
+    padding-right: 1rem;
+}
+
 #websiteTitlePreview, #websiteDescriptionPreview {
     z-index: 1;
     position: absolute;
@@ -198,11 +196,13 @@
 
 #stepButtonsWrapper {
     display: flex;
+    -moz-box-pack: justify;
     justify-content: space-between;
     bottom: 1rem;
-    position: absolute;
-    width: inherit;
-    left: 0.5rem;
+}
+
+#attributesSection { 
+    padding-bottom: 10vh;
 }
 
 .stepButton {

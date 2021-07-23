@@ -43,6 +43,14 @@ ol[class] {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+label {
+  color: #979090;
+}
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
@@ -82,13 +90,18 @@ html,
   body {
     padding: 0;
     margin: 0;
-    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Roboto Slab', serif; */
+    font-family: 'Inter', serif;
     font-size: 13px;
-    font-style: italic;
+    /* font-style: italic; */
     width: 100%;
     height: auto;
+
+    /* testing */
+    background: linear-gradient(0deg, #d8ddde 63%, #ffaa4e 94%);
+
     /* background: linear-gradient(0deg, rgba(255,255,255,1) 63%, rgba(255,170,78,1) 94%); */
-    background: #ececec;
+    /* background: #ececec; */
 
     /* dark */
     /* background: linear-gradient(0deg, rgba(21,21,21,1) 63%, rgba(255,170,78,1) 94%); */
@@ -97,10 +110,28 @@ html,
 /* Override class from react virtualized lib */
 .ReactVirtualized__Table__Grid, .ReactVirtualized__Grid__innerScrollContainer {
   overflow: visible !important;
+  width: 100% !important;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0
+}
+
+/* Customize scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar
+
+::-webkit-scrollbar-track {
+  background: lightgrey;
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
 }
