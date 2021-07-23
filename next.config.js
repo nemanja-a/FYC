@@ -10,11 +10,5 @@ module.exports = {
     },
     images: {
       domains: ['res.cloudinary.com']
-    },
-    session: {
-      jwt: true
-    },
-    env: {
-      BASE_API_URL: 'http://localhost:3000/api'
     }
   }

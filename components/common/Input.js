@@ -12,10 +12,6 @@ export function Input(props) {
       [styles.fullWidth]: props.maxWidth,
     })
 
-    //
-    // <input type="incrementer" /> config:
-    //
-
     const inputNumberwrapperClasses = classNames({
         [utilStyles.displayFlex]: true,
     })

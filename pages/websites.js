@@ -3,18 +3,11 @@ import 'react-virtualized/styles.css'
 import { Header } from "../components/Header"
 import React from "react"
 import { MainContent } from "../components/MainContent"
-import { About } from "../components/About"
 import { ToastContainer } from "react-toastify"
 import Meta from "../components/common/Meta"
 import utilStyles from "../styles/utils.module.css"
-import { classNames } from "../lib/util"
 
 export default function Websites() {
-
-    const footerClasses = classNames({
-      [utilStyles.footer]: true,
-      [utilStyles.footnote]: true
-    })
     return <div id="tableContainer" className={tableStyles.container}>
       <Meta title="World in 2021" />
       <ToastContainer />
@@ -22,7 +15,7 @@ export default function Websites() {
         <Header/>
         <MainContent />
         <div id={utilStyles.footerDescription}>
-          Year 2021. Fight against COVID-19 still persists. Our daily lives has changed a lot since when it started and it made us turn to digital technologies even more. <br/>
+          Year 2021. Fight against COVID-19 still persists. Our daily lives has changed a lot since when pandemic started and it made us turn to digital technologies even more. <br/>
           Find out what are people up to during 2021.
         </div>
         <div id={utilStyles.footer}>

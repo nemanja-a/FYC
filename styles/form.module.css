@@ -60,15 +60,13 @@
 
 .repeatableButton button:hover {
     cursor: pointer;
-    /* background: #a9a9a9 !important; */
-    background: #ff931d !important;
+    background: #ea730d !important;
     
 }
 
 .repeatableButton button:disabled {
     cursor: default !important;
     background: #ffaa4e;
-    /* background: #D8DDDE !important; */
 }
 
 .formControl { 

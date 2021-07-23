@@ -93,7 +93,7 @@
 
 .buttonPrimary:hover {
     cursor: pointer;
-    background: #ff931d;
+    background: #ea730d;
 }
 
 .buttonPrimary:disabled {
@@ -103,10 +103,6 @@
 
 .buttonPrimary:disabled:hover {
     background: #ffaa4e;
-}
-
-.buttonSecondary {
-
 }
 
 .success { 

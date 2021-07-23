@@ -12,7 +12,7 @@ import { Input } from './common/Input'
 import { ColorPicker } from './common/ColorPicker'
 import { Incrementer } from './common/Incrementer'
 import { Checkbox } from './common/Checkbox'
-import { getIncrementerValue, hexToRgb } from '../lib/util'
+import { getIncrementerValue } from '../lib/util'
 import BadWordsFilter from 'bad-words'
 import { Button } from './common/Button'
 import FadeIn from 'react-fade-in';
@@ -20,7 +20,6 @@ import { Payment } from './Payment'
 import { server } from '../config'
 import { classNames } from '../lib/util'
 import { ModalLoader } from './ModalLoader'
-import { showError } from '../lib/toast'
 import { useDropzone } from 'react-dropzone'
 
 export function AddWebsiteDialog(props) {
@@ -28,28 +27,10 @@ export function AddWebsiteDialog(props) {
   const titlePreviewRef = useRef()
   const descriptionPreviewRef = useRef()
   const { tableParams } = props
-  const defaultWebsite = {
-    url: '',
-    title: 'Website title',
-    titleOpacity: 10,
-    titleColor: "#fff",
-    titleBackgroundColor: "#ffaa4e",
-    titlePosition: 0,
-    DescriptionHeight: 19,
-    description: 'Website description',
-    descriptionOpacity: 10,
-    descriptionColor: "#fff",
-    descriptionBackgroundColor: "#ffaa4e",
-    descriptionPosition: 89,
-    DescriptionHeight: 19,
-    page: props.website.page,
-    rowIndex: props.website.rowIndex,
-    columnIndex: props.website.columnIndex,
-    image: null,
-    thumbnail: { url: WEBSITE.THUMBNAIL.DEFAULT },
-    imageWidth: 0,
-    imageHeight: 0
-  }
+  let defaultWebsite = WEBSITE.DEFAULT
+  defaultWebsite.page = props.website.page
+  defaultWebsite.rowIndex = props.website.rowIndex
+  defaultWebsite.columnIndex = props.website.columnIndex
   const defaultState = {
     showDialog: false,
     websiteValid: null,
@@ -74,16 +55,6 @@ export function AddWebsiteDialog(props) {
       acceptedFiles[0] && onImageChange(acceptedFiles[0])
      }
   })
-
-  const updateData = (event) => { 
-    setState({
-      ...state,
-      website: {
-        ...state.website,
-        [event.target.name]: event.target.value
-      }
-    })
-  }
   
   const open = () => setState({...state, showDialog: true})
   const close = async(afterAddSuccess) => {
@@ -119,7 +90,13 @@ export function AddWebsiteDialog(props) {
   }
 
   const onInputChange = (event) => { 
-    updateData(event)
+    setState({
+      ...state,
+      website: {
+        ...state.website,
+        [event.target.name]: event.target.value
+      }
+    })
   }
 
   const onNumberInputChange = (control) => {     
@@ -365,11 +342,6 @@ export function AddWebsiteDialog(props) {
       {/* Collapsed grid cell  */}
 
       {/* Dialog */}
-      <DialogOverlay
-        style={{ background: "hsla(0, 100%, 100%, 0.7) !important" }}
-        isOpen={state.showDialog}
-        onDismiss={close}
-      />
       <Dialog className={dialogStyles.dialog} aria-label="add-website-dialog" isOpen={state.showDialog} onDismiss={close}>
         <FadeIn transitionDuration={500}>
           <button className={utilStyles.closeButton} onClick={close}>
@@ -380,7 +352,7 @@ export function AddWebsiteDialog(props) {
           {state.step === 1 && <div className={utilStyles.stepTitle}>URL and Image</div>}
           {state.step === 2 && <div className={utilStyles.stepTitle}>Image appearance</div>}
           {state.step === 3 && <div className={utilStyles.stepTitle}>Payment</div>}
-        {/* temp */}
+          
           {state.loading && <ModalLoader/>}        
 
         <div id={dialogStyles.websitePreview}>
@@ -430,6 +402,7 @@ export function AddWebsiteDialog(props) {
                     top: `${state.website.descriptionPosition}%`
                   }}
               >{state.website.description}</span> </FadeIn>}
+              
               <div {...getRootProps({className: dropZoneClasses})}>
                 <input {...getInputProps()} />                          
                 <div id={dialogStyles.imageUploadOverlay}>Drop or click here to upload</div>
@@ -447,7 +420,6 @@ export function AddWebsiteDialog(props) {
           </div>
         </div>
       </FadeIn>
-    
       {/* First step */}
       {state.step === 1 && <FadeIn transitionDuration={500}>
         <div className={dialogStyles.step}>
@@ -456,18 +428,18 @@ export function AddWebsiteDialog(props) {
               <span>
                 <label htmlFor="url" className={utilStyles.formItemSpacing}>*Website Address</label>
                 <input
-                style={{minWidth: '14vw'}}
-                className={urlInputClasses}
-                value={state.website.url}
-                id="url" 
-                name="url"
-                onChange={onWebsiteUrlChange}
-                onKeyDown={() => event.key === 'Enter' && onVerifyWebsiteClick(event) }
-                type="text"
-                autoComplete="url"
-                maxLength={REFERER_HEADER_MAX_LENGTH}
-                ref={websiteUrlInputRef}
-                required />
+                  style={{minWidth: '14vw'}}
+                  className={urlInputClasses}
+                  value={state.website.url}
+                  id="url" 
+                  name="url"
+                  onChange={onWebsiteUrlChange}
+                  onKeyDown={() => event.key === 'Enter' && onVerifyWebsiteClick(event) }
+                  type="text"
+                  autoComplete="url"
+                  maxLength={REFERER_HEADER_MAX_LENGTH}
+                  ref={websiteUrlInputRef}
+                />
               </span>
             {state.websiteValid && <span className={dialogStyles.checkmark}>
                 <div className={dialogStyles.checkmarkStem}></div>
@@ -546,7 +518,7 @@ export function AddWebsiteDialog(props) {
               />
           </div>
           <div className={dialogStyles.row}>
-            <div className={dialogStyles.titleWarnings}>
+            <div>
               {state.website.title && (state.website.title.length === WEBSITE.TITLE_MAX_LENGTH) && <span>Maximum title character limit reached</span>}
               {state.titleProfane && <span className={utilStyles.error}>Bad words are not allowed.</span>}
             </div>
@@ -563,7 +535,7 @@ export function AddWebsiteDialog(props) {
               />
           </div>
           <div className={dialogStyles.row}>
-              <div className={dialogStyles.descriptionWarnings}>
+            <div>
               {state.website.description && (state.website.description.length === WEBSITE.DESCRIPTION_MAX_LENGTH) && <span>That will do it. I can remember more than {WEBSITE.DESCRIPTION_MAX_LENGTH} characters, by the way, so this one is on the programmer </span>}
               {state.descriptionProfane && <span className={utilStyles.error}>Bad words are not allowed.</span>}
             </div>
@@ -651,10 +623,6 @@ export function AddWebsiteDialog(props) {
         </div>
       </FadeIn>}
       {/* Third step end*/}
-      {/* <div id={dialogStyles.stepButtonsWrapper}>
-        <Button primary onClick={onPreviousStep} disabled={state.step === 1} className={dialogStyles.stepButton}>Previous Step</Button>
-        <Button primary onClick={onNextStep} disabled={nextButtonDisabled} className={dialogStyles.stepButton}>Next Step</Button>
-      </div> */}
       </Dialog>
       {/* Dialog */}
     </div>

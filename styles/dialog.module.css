@@ -21,15 +21,6 @@
     font-size: 28px;
 }
 
-.required {
-    color: red;
-}
-
-.required input::before {
-    content: '*';
-    color: red;
-}
-
 @media screen and (min-width: 1200px) and (max-width: 1400px){
     .urlInput {
         min-width: auto !important;
@@ -100,8 +91,8 @@
     display:inline-block;
     width: 22px;
     height:22px;
-    -ms-transform: rotate(45deg); /* IE 9 */
-    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
@@ -163,7 +154,6 @@
     top: 40px;
 }
 
-/* Dimensions are related to .cell in table.module.css - width and height of an image should be 4x larger than those on the table*/
 #imagePreviewWrapper {
     position: relative;
     width: 16vw;

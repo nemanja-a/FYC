@@ -23,7 +23,7 @@ export function WebsitesTable ({ pageIndex }) {
     // if (tableParams && loading) data = null
     let { data, error } = useSWR(tableParams ? `/api/websites?page=${Number(pageIndex)}` : null, fetcher) 
     
-    if (!data) return <TableLoader loading={loading} />
+    if (!data) return <TableLoader/>
     loading = false
 
     const rowGetter = ({index}) => { 

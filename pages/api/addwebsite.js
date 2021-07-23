@@ -1,16 +1,14 @@
 import { connectToDatabase } from "../../util/mongodb"
-import { websitePresentInNearbyPages } from "../../lib/util";
+import { websiteExistInNearbyPages } from "../../lib/util";
 
 // Find and update one 
 export default async (req, res) => {
   const website = JSON.parse(req.body)
   const { db } = await connectToDatabase();
- // Case 1
   // Handle when website exist on one or more pages
   const websiteInDatabase = await db.collection("websites").find({"websites.url": website.url}).toArray()
-  const matchFound = websiteInDatabase.length && websitePresentInNearbyPages(websiteInDatabase, website.page)
+  const matchFound = websiteInDatabase.length && websiteExistInNearbyPages(websiteInDatabase, website.page)
   if (matchFound) return res.status(409).json({error: 'Website already exists'})
-  // Case 1 end
   const page = await db.collection("websites").findOne({page: website.page})
   const updatedPage = JSON.parse(JSON.stringify(page));
   

@@ -36,19 +36,18 @@ export function Payment(props) {
         props.close(websiteAddSuccess)
         return data
       }
+        showError('Could not add website. Try again.')
+        props.toggleLoading(false)  
     }
 
-    const onError = (message) => { 
-       showError(message)
-    }
-    //toast.warn('Website added successfully!', toastOptions)
+    const onError = (message) => showError(message)
+    
   return (
        <div id={dialogStyles.secondStep}>
             <div className={paymentStyles.content}>
-                {/* <span style={{padding: '1rem 0'}}> */}
                 <span id={paymentStyles.amountWrapper}>
                   <Input 
-                      label='Amount in USD($)'
+                      label='Amount in EUR(€)'
                       name='amount'
                       type='number'
                       onChange={onAmountChange}

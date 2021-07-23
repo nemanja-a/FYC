@@ -1,6 +1,6 @@
 import { connectToDatabase } from "../../util/mongodb"
 import { WebRiskServiceClient } from "@google-cloud/web-risk"
-import { websitePresentInNearbyPages } from "../../lib/util"
+import { websiteExistInNearbyPages } from "../../lib/util"
 
 export default async (req, res) => {
   const { db } = await connectToDatabase();
@@ -9,7 +9,7 @@ export default async (req, res) => {
   // Case 1
   // Handle when website exist on one or more pages
   const websiteInDatabase = await db.collection("websites").find({"websites.url": url}).toArray()
-  const matchFound = websiteInDatabase.length && websitePresentInNearbyPages(websiteInDatabase, Number(page))
+  const matchFound = websiteInDatabase.length && websiteExistInNearbyPages(websiteInDatabase, Number(page))
   if (matchFound) return res.status(409).json({error: 'Website already exists'})
   // Case 1 end
 

@@ -2,7 +2,7 @@ import '@reach/dialog/styles.css'
 import styles from "../styles/header.module.css"
 import utilStyles from "../styles/utils.module.css"
 
-export function Header(props) {
+export function Header() {
   return (
     <div id="header" className={utilStyles.displayFlex}>
       <div id={styles.textContent}>

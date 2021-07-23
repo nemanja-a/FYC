@@ -35,23 +35,20 @@ const cloudinaryUpload = (file) => cloudinary.v2.uploader.upload(file)
 
 const handler = nc()
   .use(upload.single("image"))
-  .post( async (req,res) => {
-    // Check if image has innapropriate content
+  .post( async (req,res) => {    
   const projectId = 'famous-channels'
   const keyFilename = './famous-channels-f2d60f2dde10.json'
 
-
-  // Cloud vision api working code, but commented until needed
-
-  // const visionClient = new ImageAnnotatorClient({projectId, keyFilename})
-  // const [result] = await visionClient.safeSearchDetection(req.file.buffer)
-  // const detections = result.safeSearchAnnotation;
-  // if (!detections) {
-  //   return res.status(417).json({uploaded: false, message: "An error occured during safe search detection."}) 
-  // }
-  // if (hasUnsafeContent(detections)) {
-  //   return res.status(200).json({uploaded: false, message: "Image upload failed because this website forbids promotion of adult, violence, medical, racy or any disturbing content."}) 
-  // }
+  // Check if image has innapropriate content
+  const visionClient = new ImageAnnotatorClient({projectId, keyFilename})
+  const [result] = await visionClient.safeSearchDetection(req.file.buffer)
+  const detections = result.safeSearchAnnotation;
+  if (!detections) {
+    return res.status(417).json({uploaded: false, message: "An error occured during safe search detection."}) 
+  }
+  if (hasUnsafeContent(detections)) {
+    return res.status(200).json({uploaded: false, message: "Image upload failed because image might contain adult, violence, medical, racy or other disturbing content. Select another image and try again"}) 
+  }
 
   const file64 = formatBufferTo64(req.file)
   const uploadResult = await cloudinaryUpload(file64.content)

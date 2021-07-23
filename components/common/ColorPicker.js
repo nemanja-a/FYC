@@ -4,7 +4,6 @@ import styles from "../../styles/colorpicker.module.css"
 import formStyles from "../../styles/form.module.css"
 import { classNames, useClickOutside } from "../../lib/util"
 import { useCallback, useRef, useState } from "react"
-// import "react-colorful/dist/index.css"
 
 export function ColorPicker (props) {
     const [isOpen, toggle] = useState(false);

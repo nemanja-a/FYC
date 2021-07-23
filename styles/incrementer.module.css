@@ -3,13 +3,13 @@
 }
 
 .buttons button {
-    background: #D8DDDE;
+    background: #ffaa4e;
     border: none;
     outline: none;
 }
 
 .buttons button:active {
-    background: #D8DDDE;
+    background: #ea730d;
 }
 
 .buttons button:hover {

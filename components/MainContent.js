@@ -5,7 +5,6 @@ import { NAVIGATION_BUTTONS_COUNT, TOTAL_PAGE_COUNT } from "../util/variables"
 import tableStyles from '../styles/table.module.css'
 import { classNames } from "../lib/util"
 import { Input } from "./common/Input"
-import utilStyles from "../styles/utils.module.css"
 
 export function MainContent () {
     const [ state, setState ] = useState({
@@ -33,7 +32,13 @@ export function MainContent () {
     const previousButtonDisabled = !state.pageIndex
     const nextButtonDisabled = state.pageIndex > TOTAL_PAGE_COUNT - 1
     
-    const navigationButton = (pageIndex, buttonIndex) => <button id={buttonIndex} className={pageIndex === state.pageIndex ? paginationStyles.activePage : null } onClick={() => setState({...state, pageIndex})}>{pageIndex}</button>
+    const navigationButton = (pageIndex, buttonIndex) => {
+      return <button 
+        id={buttonIndex} 
+        className={pageIndex === state.pageIndex ? paginationStyles.activePage : null} 
+        onClick={() => setState({...state, pageIndex})}>{pageIndex}
+      </button>
+    }
     const rangeButton = (text, disabled, onClick) => <button disabled={disabled} onClick={onClick}>{text}</button> 
     const onFirstPageClicked = () => setState({loading: true, pageRangeStart: 0, pageIndex: 0})
     const onRangeButtonClicked = (pageRangeStart) => { setState({loading: true, pageRangeStart, pageIndex: pageRangeStart}) }

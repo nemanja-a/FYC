@@ -90,21 +90,11 @@ html,
   body {
     padding: 0;
     margin: 0;
-    /* font-family: 'Roboto Slab', serif; */
     font-family: 'Inter', serif;
     font-size: 13px;
-    /* font-style: italic; */
     width: 100%;
     height: auto;
-
-    /* testing */
     background: linear-gradient(0deg, #d8ddde 63%, #ffaa4e 94%);
-
-    /* background: linear-gradient(0deg, rgba(255,255,255,1) 63%, rgba(255,170,78,1) 94%); */
-    /* background: #ececec; */
-
-    /* dark */
-    /* background: linear-gradient(0deg, rgba(21,21,21,1) 63%, rgba(255,170,78,1) 94%); */
 }
 
 /* Override class from react virtualized lib */
